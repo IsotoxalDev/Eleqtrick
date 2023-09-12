@@ -1,21 +1,73 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctkc65knoaklh"]
+[gd_scene load_steps=4 format=3 uid="uid://ctkc65knoaklh"]
 
 [ext_resource type="PackedScene" uid="uid://dod8adxw0pcmk" path="res://Core/charge.tscn" id="1_kdd51"]
 
-[node name="Playground" type="Node2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hljmi"]
+bg_color = Color(0.423529, 0.678431, 0.85098, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 16
 
-[node name="Charge3" parent="." instance=ExtResource("1_kdd51")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bxelc"]
+bg_color = Color(1, 0.490196, 0.490196, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 16
+
+[node name="Node" type="Node"]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Charge3" parent="Node2D" instance=ExtResource("1_kdd51")]
 position = Vector2(183, 130)
 charge = -1.0
 dielectric = 1
 mass = 0.1
 
-[node name="Charge4" parent="." instance=ExtResource("1_kdd51")]
+[node name="Charge4" parent="Node2D" instance=ExtResource("1_kdd51")]
 position = Vector2(648, 338)
 dielectric = 1
 mass = 91000.0
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/StaticBody2D"]
 polygon = PackedVector2Array(0, 0, 1280, 0, 1280, 720, 0, 720, 0, 0, -88, -101, -55, 780, 1392, 801, 1366, -94, -86, -96)
+
+[node name="UI" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.035
+anchor_right = 0.2
+anchor_bottom = 0.4
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 15
+
+[node name="Blue" type="HBoxContainer" parent="UI"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="UI/Blue"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hljmi")
+
+[node name="Label" type="Label" parent="UI/Blue"]
+layout_mode = 2
+text = ": Negative"
+
+[node name="Red" type="HBoxContainer" parent="UI"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="UI/Red"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bxelc")
+
+[node name="Label" type="Label" parent="UI/Red"]
+layout_mode = 2
+text = ": Positive"

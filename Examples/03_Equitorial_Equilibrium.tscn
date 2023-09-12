@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ba1qdwa0he344"]
+[gd_scene load_steps=6 format=3 uid="uid://clw1lfdlrv6y3"]
 
-[ext_resource type="PackedScene" uid="uid://dvm0h8hvq26s6" path="res://Core/charge_3d.tscn" id="1_ht61j"]
-[ext_resource type="Script" path="res://Addons/camera.gd" id="2_64chu"]
+[ext_resource type="PackedScene" uid="uid://dvm0h8hvq26s6" path="res://Core/charge_3d.tscn" id="1_13orr"]
+[ext_resource type="Script" path="res://Addons/camera.gd" id="2_q0wge"]
 
 [sub_resource type="Environment" id="Environment_3v6ny"]
 
@@ -25,15 +25,16 @@ corner_detail = 16
 
 [node name="Node3D" type="Node3D" parent="."]
 
-[node name="Charge3D" parent="Node3D" instance=ExtResource("1_ht61j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.66, 0)
-charge = -1.0
+[node name="Charge3D" parent="Node3D" instance=ExtResource("1_13orr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 0)
 
-[node name="Charge3D2" parent="Node3D" instance=ExtResource("1_ht61j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -7, 0)
+[node name="Charge3D2" parent="Node3D" instance=ExtResource("1_13orr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
+fixed = true
 
-[node name="Charge3D4" parent="Node3D" instance=ExtResource("1_ht61j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -7, 0)
+[node name="Charge3D4" parent="Node3D" instance=ExtResource("1_13orr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+fixed = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
@@ -50,7 +51,7 @@ render_target_update_mode = 4
 [node name="Camera3D" type="Camera3D" parent="Node3D/SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 0.819152, 0.573576, 0, -0.573576, 0.819152, 0, 3, 5)
 environment = SubResource("Environment_3v6ny")
-script = ExtResource("2_64chu")
+script = ExtResource("2_q0wge")
 
 [node name="UI" type="VBoxContainer" parent="."]
 anchors_preset = -1
