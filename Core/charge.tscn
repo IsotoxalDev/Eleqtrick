@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dod8adxw0pcmk"]
+
+[ext_resource type="Script" path="res://Core/charge.gd" id="1_1m7b0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ndv48"]
+radius = 50.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d2cs5"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_4w4me"]
+material = SubResource("StandardMaterial3D_d2cs5")
+radius = 29.213
+
+[node name="Charge" type="CharacterBody2D"]
+script = ExtResource("1_1m7b0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ndv48")
+debug_color = Color(0.65098, 0.513726, 0.184314, 0.419608)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(-3.8147e-06, 1.46627e-05)
+scale = Vector2(1.71351, 100)
+mesh = SubResource("SphereMesh_4w4me")

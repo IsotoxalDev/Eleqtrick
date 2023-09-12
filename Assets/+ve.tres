@@ -1,0 +1,6 @@
+[gd_resource type="SphereMesh" load_steps=2 format=3 uid="uid://qomibbnc35yr"]
+
+[ext_resource type="Material" uid="uid://db2t0jgtfbu2j" path="res://Assets/Positive.tres" id="1_460ai"]
+
+[resource]
+material = ExtResource("1_460ai")

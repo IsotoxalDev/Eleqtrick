@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://cof3fef5e3h8"]
+
+[ext_resource type="PackedScene" uid="uid://dod8adxw0pcmk" path="res://Core/charge.tscn" id="1_gjgqp"]
+
+[node name="Playground" type="Node2D"]
+
+[node name="Charge3" parent="." instance=ExtResource("1_gjgqp")]
+position = Vector2(183, 130)
+charge = -1.0
+dielectric = 1
+mass = 0.1
+
+[node name="Charge4" parent="." instance=ExtResource("1_gjgqp")]
+position = Vector2(648, 338)
+dielectric = 1
+mass = 91000.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(0, 0, 1280, 0, 1280, 720, 0, 720, 0, 0, -88, -101, -55, 780, 1392, 801, 1366, -94, -86, -96)

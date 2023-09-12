@@ -1,0 +1,6 @@
+[gd_resource type="SphereMesh" load_steps=2 format=3 uid="uid://bolptum02x0a6"]
+
+[ext_resource type="Material" uid="uid://bv7vcmhjvf78o" path="res://Assets/Negative.tres" id="1_g00np"]
+
+[resource]
+material = ExtResource("1_g00np")
