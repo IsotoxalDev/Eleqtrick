@@ -29,12 +29,12 @@ func _physics_process(delta):
 	for q2 in parent.get_children(): # Looping over all charges
 		if !q2 is Charge2D or q2 == self or not q2.charge: continue # Checks
 		var r = q2.position - self.position # Self is q1
-		var fm = Vector2(-K/dielectric * self.charge * q2.charge / # Coulomb's law
-			 (r.length()*15)**2, 0) # 15 times distance in space
-		force += (fm.x/fm.length())*(fm.length() * (r/r.length()))
-		print(fm)
+		var fm = (-K/dielectric * self.charge * q2.charge / # Coulomb's law
+			 (r.length()*15)**2) # 15 times distance in space
+		force += fm * (r/r.length())
 		
 	var acc = force/mass # Getting acceleration from force
-	velocity += acc # Adding acceleration to velocity
+	# This is not 1/60th of acceleration to speed up the simulation
+	velocity += acc # Adding acceleration per second to velocity
 	move_and_slide()
 	

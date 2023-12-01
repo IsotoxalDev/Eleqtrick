@@ -14,6 +14,9 @@ const K = 9e9 # implies 9 x 10^9
 ## Mass in electron mass
 @export var mass: float = 50
 
+## The scale of space
+@export var space_scale: float = 500
+
 @onready var parent = get_parent()
 
 func _ready():
@@ -29,12 +32,12 @@ func _physics_process(delta):
 	for q2 in parent.get_children(): # Looping over all charges
 		if !q2 is Charge3D or q2 == self or not q2.charge: continue # Checks
 		var r = q2.position - self.position # Self is q1
-		var fm = Vector3(-K/dielectric * self.charge * q2.charge / # Coulomb's law
-			 (r.length()*500)**2, 0, 0) # 500 times distance in the 3D space
-		print(fm)
-		force += (fm.x/fm.length())*(fm.length() * (r/r.length()))
+		var fm = (-K/dielectric * self.charge * q2.charge / # Coulomb's law
+			 (r.length()*space_scale)**2)
+		force += (fm * (r/r.length()))
 		
 	var acc = force/mass # Getting acceleration from force
-	velocity += acc # Adding acceleration to velocity
+	# This is not 1/60th of acceleration to speed up the simulation
+	velocity += acc # Adding acceleration per second to velocity
 	move_and_slide() # To move the charge
 	
